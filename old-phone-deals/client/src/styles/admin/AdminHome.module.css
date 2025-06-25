@@ -1,0 +1,120 @@
+@import '../variables.css';
+
+.contentWrapper {
+    margin-left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
+    min-height: 100vh;
+    transition: var(--transition-normal);
+}
+
+.main {
+    padding: var(--spacing-xl);
+    min-height: 100vh;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.hamburguerButton {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--dark);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    border-radius: var(--border-radius-sm);
+    transition: var(--transition-quick);
+}
+
+.hamburguerButton:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    transform: scale(1.05);
+}
+
+/* overlay for mobile view when sidebar is open */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    transition: var(--transition-quick);
+}
+
+/* responsive design */
+@media (max-width: 992px) {
+    .contentWrapper {
+        margin-left: var(--sidebar-width-collapsed);
+        width: calc(100% - var(--sidebar-width-collapsed));
+    }
+
+    .main {
+        padding: var(--spacing-lg);
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .main {
+        padding: var(--spacing-md);
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .title {
+        margin-bottom: var(--spacing-sm);
+    }
+}
+
+@media (max-width: 576px) {
+    .contentWrapper {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .hamburguerButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* when sidebar is expanded */
+    .contentWrapperWithExpandedSidebar {
+        margin-left: 0;
+        position: relative;
+    }
+
+    .contentWrapperWithExpandedSidebar .overlay {
+        display: block;
+    }
+}
+
+.orderNotification {
+    margin-bottom: 1rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    opacity: 0.95 !important;
+}
+
+.orderNotification:hover {
+    opacity: 1 !important;
+} 

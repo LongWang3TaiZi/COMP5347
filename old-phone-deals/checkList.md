@@ -1,0 +1,179 @@
+# Users Interface Requirements
+
+- [x] **1. Main Page**
+    - [x] Top bar is always shown on the Main Page
+        - [x] Display website name: "OldPhoneDeals"
+        - [x] Display a search bar to find phones (based on title) with a search button
+        - [x]Display a checkout button
+        - [x] Diplay a sign-in button (if not logged in)
+        - [x] Display profile button (if logged in)
+        - [x] Display sign-out button (if logged in)
+        - [x] Display a drop-down selection to filter based on brand (only shown in "Search state")
+        - [x] Display a range slider to filter items based on maximum price (only shown in "Search state")
+    - [x] Top bar is hidden when other pages are active
+    - [x] **Website Content States:**
+        - [x] **"Home" state (user has not searched anything or selected any item):**
+            - [x] Display "Sold out soon" section:
+                - [x] Shows five phone listings (image and price)
+                - [x] Listings have the least quantity available (more than 0 quantity and not disabled)
+            - [x] Display "Best sellers" section:
+                - [x] Shows five phone listings (image and rating)
+                - [x] Listings have the highest average rating (not disabled and at least two ratings given)
+                - [x] Rating calculation considers hidden comments/ratings
+        - [x] **"Search" state (user searches something):**
+            - [x] Shows all items with titles that match the search word (case insensitive and partial)
+        - [x] **"Item" state (user clicks/selects a phone listing):**
+            - [x] Display the title of the selected phone
+            - [x] Display the brand of the selected phone
+            - [x] Display the image of the selected phone
+            - [x] Display the available stock of the selected phone
+            - [x] Display the seller's full name (concatenation of first name and last name)
+            - [x] Display the price of the selected phone
+            - [x] Display Reviews Section:
+                - [x] Show the first 3 reviews
+                - [x] Display a button to "show more" reviews (clicking shows next three)
+                - [x] Each review consists of:
+                    - [x] Full name of reviewer
+                    - [x] Rating
+                    - [x] Comment (limited to 200 characters initially)
+                    - [x] Display "show more" button for comment if comment > 200 characters (shows rest of comment)
+                    - [x] Display Hide/Show button for comment (only shown for comment author and phone seller)
+                    - [x] Hidden comment presented in a different color (e.g., grey vs. black for normal)
+            - [x] Display a button to "add the item to cart"
+                - [x] Clicking "add to cart" button shows a text field to ask for quantity
+            - [x] Display a button to "add the item to the wishlist"
+            - [x] Display a box showing the current added quantity (shows 0 if not added to cart)
+            - [x] Display a text input/textfield for users to add comments
+            - [x] Display a rating selection for users
+            - [x] Display a button to post the comment
+                - [x] Submitted comment is stored in the database
+                - [x] Submitted comment is shown to other users
+
+- [x] **2. Auth Pages**
+    - [x] User redirected to Auth Page if trying to add to cart without logging in
+    - [x] User redirected to Auth Page if "sign in" button is clicked on Main Page top bar
+    - [x] Auth Page provides two options: Sign-up and Login
+    - [x] Users must sign-up/sign-in before adding items to cart or going to Checkout Page
+    - [x] **Sign-up Process:**
+        - [x] Collect first name
+        - [x] Collect last name
+        - [x] Collect email address (as username)
+        - [x] Collect password
+        - [x] Implement appropriate data validation for sign-up inputs
+        - [x] Implement secure sign-up (e.g., CSRF protection, input sanitization)
+        - [x] Implement password hashing (passwords not stored as plain text)
+        - [x] Create and maintain account in the database after correct data entry
+        - [x] Implement email verification for sign-up
+            - [x] Send verification email with an activation link
+            - [x] Prevent sign-in before email validation (account activation)
+    - [x] **Sign-in Process:**
+        - [x] Implement secure login
+        - [x] After successful login (if previously trying to add to cart), redirect to the previously shown page
+    - [x] **Sign-out Process:**
+        - [x] Sign-out button on Main Page top bar (if logged in)
+        - [x] Display a confirmation box before signing out
+        - [x] After sign-out, redirect to Main Page with "Home" state active
+    - [x] **Reset Password Process:**
+        - [x] Link to reset password page available on the sign-in page
+        - [x] Reset password page requires a valid/registered email address
+        - [x] If email is valid (in database), send a password reset link via email
+        - [x] Clicking reset link redirects to a page to provide a new password (twice for confirmation)
+        - [x] New password is saved
+        - [x] User can only sign-in using the new password
+
+- [x] **3. Checkout Page**
+    - [x] Shown when user clicks checkout button on Main Page top bar
+    - [x] Display a "back" button to go to the previous page
+    - [x] Display all added items in the cart with:
+        - [x] The title of the phone listing
+        - [x] The price of each item
+        - [x] The quantity selected
+        - [x] A button and textbox to modify item quantity (selecting 0 removes the item)
+        - [x] A button to remove an item
+    - [x] Display text showing the total price of selected items
+    - [x] Display a button to confirm the transaction
+    - [x] After transaction confirmation:
+        - [x] Assume items paid and delivered (for simulation purposes)
+        - [x] Item quantities in database reflect the transaction
+        - [x] User redirected to Main Page with "Home" state active
+
+- [x] **4. Profile Page**
+    - [x] Shown when a logged-in user clicks "profile" button on Main Page top bar
+    - [x] Page has four tabs/modes:
+        - [x] **Edit profile tab/mode:**
+            - [x] Show editable textboxes for first name (pre-filled)
+            - [x] Show editable textboxes for last name (pre-filled)
+            - [x] Show editable textboxes for email (pre-filled)
+            - [x] Include an "Update profile" button
+            - [x] When "Update profile" is clicked, require user to fill in correct password before updating
+            - [x] Update data in the database
+        - [x] **Change password tab/mode:**
+            - [x] Show a textbox for the current password
+            - [x] Show a textbox for the new password
+            - [x] Include a button to confirm password change
+            - [x] Send an email to notify user that password has been changed
+        - [x] **Manage listings tab/mode:**
+            - [x] Display a button to add a new listing (requires all details: title, price, etc.)
+            - [x] Show a list of phone listings created/associated with this user
+            - [x] Allow user to enable/disable each of their listings
+            - [x] Allow user to remove their listing items
+        - [x] **View comments tab/mode:**
+            - [x] Show a list of comments for each phone listing owned by the user
+            - [x] User can only read the comments (no delete button)
+            - [x] All hidden comments (hidden by user/seller) are shown
+            - [x] Display button(s) to hide/show these comments (for owner/seller)
+    - [x] Display a "Sign-out" button regardless of the selected tab/mode
+    - [x] After signing out from Profile Page, redirect to Main Page with "Home" state active
+
+# Admin Interface Requirements
+
+- [x] **1. Admin Authentication**
+    - [x] Accessible only via a separate route (e.g., `/admin`)
+    - [x] Require login using a hardcoded admin email and password (stored securely using password hashing)
+    - [x] Admin session should expire after a period of inactivity
+
+- [x] **2. User Management**
+    - [x] View a list of all registered users with:
+        - [x] Full name
+        - [x] Email
+        - [x] Last login date/time
+    - [x] Search users by name or email
+    - [x] Edit user details (name and email)
+    - [x] Disable user accounts
+    - [x] Delete user accounts
+    - [x] View each user's listings
+    - [x] View each user's reviews
+
+- [x] **3. Listing Management**
+    - [x] View all phone listings, including disabled ones
+    - [x] Search listings by title or brand
+    - [x] Edit listing details (title, price, stock, etc.)
+    - [x] Disable listings
+    - [x] Delete listings
+    - [x] View associated reviews for listings
+    - [x] View seller information for listings
+
+- [x] **4. Review & Comment Moderation**
+    - [x] View all reviews, including hidden comments
+    - [x] Search comments by user, content, or listing
+    - [x] Toggle visibility of any review (override user/seller settings)
+
+- [x] **5. Sales and Activity Logs**
+    - [x] View a log of all confirmed transactions with:
+        - [x] Timestamp
+        - [x] Buyer name
+        - [x] Items purchased and quantities
+        - [x] Total amount
+    - [x] View notifications or a log when an order is placed
+    - [x] Export sales history (CSV or JSON format)
+
+- [x] **6. Security and Integrity**
+    - [x] Ensure all admin operations are logged for audit purposes
+    - [x] Confirm actions like deletion or disabling with pop-up dialogs
+
+- [x] **7. Admin UI Features**
+    - [x] Responsive, clean, and intuitive design
+    - [x] Allow pagination in all tables/lists
+    - [x] Allow sorting in all tables/lists
+    - [x] Allow filtering in all tables/lists
+    - [x] Async operations with success/error messages

@@ -1,0 +1,76 @@
+/* ProfilePage.css - Profile page styles */
+
+.profile-page {
+  min-height: 90vh;
+}
+
+/* tab styles */
+.profile-tabs .nav-tabs {
+  border-bottom: 2px solid #e9ecef;
+  margin-bottom: 20px;
+}
+
+.profile-tabs .nav-link {
+  color: #495057;
+  border: none;
+  padding: 12px 16px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.profile-tabs .nav-link:hover {
+  color: #0d6efd;
+  border: none;
+  background-color: rgba(13, 110, 253, 0.05);
+}
+
+.profile-tabs .nav-link.active {
+  color: #0d6efd;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #0d6efd;
+}
+
+/* comment list styles */
+.comment-item {
+  padding: 15px 0;
+}
+
+.comment-item:last-child {
+  border-bottom: none !important;
+}
+
+/* product table styles */
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* button styles */
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* status badge styles */
+.badge {
+  padding: 6px 10px;
+  font-weight: 500;
+}
+
+/* card component styles */
+.card {
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* loading state styles */
+.spinner-border {
+  width: 2rem;
+  height: 2rem;
+} 

@@ -1,0 +1,78 @@
+@import '../variables.css';
+
+/* sidebar base styles that extend bootstrap */
+.sidebar {
+    width: var(--sidebar-width);
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+    transition: var(--transition-normal);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* brand container extends bootstrap */
+.brandContainer {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* nav item extends bootstrap Nav.Link */
+.navItem {
+    border-radius: var(--border-radius-sm);
+    margin: 0.25rem 0.75rem;
+    transition: var(--transition-quick);
+    color: var(--text-light) !important;
+}
+
+.navItem:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateX(5px);
+}
+
+.activeNavItem {
+    background-color: var(--primary) !important;
+    color: var(--white) !important;
+    font-weight: 600;
+}
+
+.activeNavItem:hover {
+    background-color: var(--primary-dark) !important;
+}
+
+/* responsive design */
+@media (max-width: 992px) {
+    .sidebar {
+        width: var(--sidebar-width-collapsed);
+        overflow: hidden;
+    }
+
+    .navItemText {
+        display: none;
+    }
+
+    /* expanded sidebar styles */
+    .sidebarExpanded {
+        width: var(--sidebar-width);
+    }
+
+    .sidebarExpanded .navItemText {
+        display: inline;
+    }
+}
+
+@media (max-width: 576px) {
+    .sidebar {
+        width: 0;
+        transform: translateX(-100%);
+    }
+
+    .sidebarExpanded {
+        width: var(--sidebar-width);
+        transform: translateX(0);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+} 

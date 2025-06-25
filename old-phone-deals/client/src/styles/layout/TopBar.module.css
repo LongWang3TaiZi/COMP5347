@@ -1,0 +1,124 @@
+/* styles for the fixed top navigation bar */
+.topBarContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030; /* bootstrap navbar z-index */
+}
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+}
+
+.logoTitle {
+    margin-bottom: 0 !important;
+    color: #0d6efd; /* bootstrap primary color */
+}
+
+.logoLink {
+    color: inherit;
+    text-decoration: none;
+}
+
+.logoLink:hover {
+    color: #0a58ca; /* bootstrap primary hover color */
+    text-decoration: none;
+}
+
+.searchContainer {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    padding: 0 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.searchInput {
+    width: 100%;
+    max-width: 100%;
+}
+
+.actionsContainer {
+    display: flex;
+    align-items: center;
+}
+
+/* helper class for fixed navbar spacing */
+:global(.content-wrapper) {
+    margin-top: 70px; /* adjust based on your navbar height */
+}
+
+/* responsive styles for different screen sizes */
+@media (max-width: 992px) {
+    .searchContainer {
+        padding: 0 0.5rem;
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .topBarContainer {
+        padding: 0.5rem;
+    }
+
+    :global(.content-wrapper) {
+        margin-top: 160px; /* increase for mobile stacked layout */
+    }
+
+    .logoContainer {
+        margin-bottom: 0.5rem;
+        justify-content: center;
+    }
+
+    .searchContainer {
+        order: 2;
+        margin: 0.5rem 0;
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .actionsContainer {
+        order: 3;
+        justify-content: center;
+        margin-top: 0.5rem;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 576px) {
+    .actionsContainer {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .actionsContainer > div {
+        margin-top: 0.5rem;
+        width: 100%;
+    }
+
+    .actionsContainer .d-flex {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .actionsContainer .d-flex a,
+    .actionsContainer .d-flex button {
+        width: 100%;
+        margin: 0.25rem 0;
+    }
+
+    .logoTitle {
+        font-size: 1.25rem;
+    }
+}

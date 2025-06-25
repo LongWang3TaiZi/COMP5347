@@ -1,0 +1,67 @@
+@import './variables.css';
+
+/* global styles that extend bootstrap */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-quick);
+}
+
+a:hover {
+    color: var(--primary);
+}
+
+button {
+    cursor: pointer;
+    font-family: var(--font-family);
+}
+
+.btn {
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-sm) var(--spacing-md);
+    transition: var(--transition-quick);
+    font-weight: 500;
+}
+
+
+.content-container {
+    flex: 1;
+    padding: var(--spacing-lg);
+    min-height: 100vh;
+}
+
+/* card hover effect */
+.card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* responsive adjustments */
+@media (max-width: 768px) {
+    .content-container {
+        padding: var(--spacing-md);
+    }
+
+    .btn {
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+} 
